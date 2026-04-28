@@ -179,7 +179,47 @@ jQuery.validator.addMethod("strippedminlength", function(value, element, param) 
 
 // same as email, but TLD is optional
 jQuery.validator.addMethod("email2", function(value, element, param) {
-	return this.optional(element) || /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)*(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i.test(value);
+	if (this.optional(element)) {
+		return true;
+	}
+
+	// Linear-time email validation with optional TLD.
+	// Allows: local@domain and local@sub.domain
+	// Disallows obvious malformed addresses that previously failed.
+	var parts = value.split("@");
+	if (parts.length !== 2) {
+		return false;
+	}
+
+	var local = parts[0];
+	var domain = parts[1];
+
+	if (!local || !domain) {
+		return false;
+	}
+
+	// Local part: dot-atom style, no leading/trailing/consecutive dots.
+	if (local.charAt(0) === "." || local.charAt(local.length - 1) === "." || local.indexOf("..") !== -1) {
+		return false;
+	}
+	if (!/^[A-Z0-9.!#$%&'*+\/=?^_`{|}~-]+$/i.test(local)) {
+		return false;
+	}
+
+	// Domain part: labels separated by dots, optional TLD (single label allowed).
+	// Labels must be 1..63 chars, alnum at ends, hyphen allowed inside.
+	var labels = domain.split(".");
+	for (var i = 0; i < labels.length; i++) {
+		var label = labels[i];
+		if (!label || label.length > 63) {
+			return false;
+		}
+		if (!/^[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?$/i.test(label)) {
+			return false;
+		}
+	}
+
+	return true;
 }, jQuery.validator.messages.email);
 
 // same as url, but TLD is optional
