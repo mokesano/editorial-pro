@@ -161,16 +161,31 @@ document.webL10n = (function(window, document, undefined) {
     function evalString(text) {
       if (text.lastIndexOf('\\') < 0)
         return text;
-      return text.replace(/\\\\/g, '\\')
-                 .replace(/\\n/g, '\n')
-                 .replace(/\\r/g, '\r')
-                 .replace(/\\t/g, '\t')
-                 .replace(/\\b/g, '\b')
-                 .replace(/\\f/g, '\f')
-                 .replace(/\\{/g, '{')
-                 .replace(/\\}/g, '}')
-                 .replace(/\\"/g, '"')
-                 .replace(/\\'/g, "'");
+      return text.replace(/\\([\\nrtbf{}"'])/g, function(match, ch) {
+        switch (ch) {
+          case '\\':
+            return '\\';
+          case 'n':
+            return '\n';
+          case 'r':
+            return '\r';
+          case 't':
+            return '\t';
+          case 'b':
+            return '\b';
+          case 'f':
+            return '\f';
+          case '{':
+            return '{';
+          case '}':
+            return '}';
+          case '"':
+            return '"';
+          case '\'':
+            return '\'';
+        }
+        return match;
+      });
     }
 
     // parse *.properties text data into an l10n dictionary
