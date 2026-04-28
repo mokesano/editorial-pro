@@ -288,7 +288,7 @@ $(document).ready(function() {
         try {
             var parsedUrl = new URL(trimmedHref, window.location.origin);
             var allowedProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
-            return allowedProtocols.indexOf(parsedUrl.protocol) !== -1 ? trimmedHref : '#';
+            return allowedProtocols.indexOf(parsedUrl.protocol) !== -1 ? parsedUrl.href : '#';
         } catch (e) {
             return '#';
         }
