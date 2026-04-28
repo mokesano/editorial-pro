@@ -112,9 +112,9 @@
 		
 	<br /><br />
 	
-	<a href="https://wizdam.editorial/"><img src="{$baseUrl}/core/Library/templates/images/core.gif" style="border: 0;" alt="Wizdam Editorial Project" /></a>
+	<a href="https://wizdam.editorial/"><img src="{$baseUrl}/core/Library/templates/images/core.gif" style="border: 0;" alt="Editorial Pro Project" /></a>
 	<br />
-	Wizdam Editorial was developed by the Wizdam Editorial Project.
+	Editorial Pro was developed by the Editorial Pro Project.
 </div>
 
 {include file="common/footer.tpl"}

@@ -1,39 +1,33 @@
 ```
-# PHP compiled files
-*.phpc
-
 # Dependencies
 vendor/
+composer.lock
 
-# Logs and temp files
+# Logs
 *.log
-*.tmp
+error_log
+*.err
 
 # Environment
 .env
 .env.local
-*.env.*
+.env.*
 
-# IDE files
-.idea/
-.vscode/
-node_modules/
+# Cache and temporary files
+/cache/
+tmp/
+temp/
+*.tmp
 
 # OS generated files
 .DS_Store
 Thumbs.db
 
-# Build/test artifacts
-build/
-dist/
-coverage/
-htmlcov/
-*.out
+# IDE specific
+.idea/
+.vscode/
 
-# Cache directories
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
+# PHP specific
+*.php~
+phpunit.xml.dist
 ```

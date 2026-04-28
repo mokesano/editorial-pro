@@ -1,4 +1,4 @@
-# Contributing to Wizdam Editorial
+# Contributing to Editorial Pro
 
 First of all, thank you for contributing!
 

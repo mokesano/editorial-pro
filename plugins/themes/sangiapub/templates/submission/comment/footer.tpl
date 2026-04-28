@@ -15,7 +15,7 @@
 <div id="pageFooter">
     <div id="standardFooter">
 	    <a href="https://wizdam.sangia.org">
-		<img src="{$baseUrl}/assets/img/403index.png" alt="Wizdam Editorial Systems"/>
+		<img src="{$baseUrl}/assets/img/403index.png" alt="Editorial Pro Systems"/>
 		</a>
 	</div>
 </div>
