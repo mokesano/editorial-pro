@@ -2390,7 +2390,15 @@ $(document).ready(function() {
             const httpMatches = content.match(/https?:\/\/[^\s]+|www\.[^\s]+/g);
             if (httpMatches) {
                 httpMatches.forEach(httpUrl => {
-                    if (!httpUrl.includes('doi.org')) addLinkWithLoading(referenceLinks, httpUrl, 'View Source', '<svg focusable="false" viewBox="0 0 8 8" height="20" aria-label="Opens in new window" class="icon icon-arrow-up-right-tiny arrow-external-link"><path d="M1.12949 2.1072V1H7V6.85795H5.89111V2.90281L0.784057 8L0 7.21635L5.11902 2.1072H1.12949Z"></path></svg>');
+                    try {
+                        const normalizedUrl = httpUrl.startsWith('www.') ? 'https://' + httpUrl : httpUrl;
+                        const parsedUrl = new URL(normalizedUrl);
+                        const host = parsedUrl.hostname.toLowerCase();
+                        const isDoiHost = host === 'doi.org' || host.endsWith('.doi.org');
+                        if (!isDoiHost) addLinkWithLoading(referenceLinks, httpUrl, 'View Source', '<svg focusable="false" viewBox="0 0 8 8" height="20" aria-label="Opens in new window" class="icon icon-arrow-up-right-tiny arrow-external-link"><path d="M1.12949 2.1072V1H7V6.85795H5.89111V2.90281L0.784057 8L0 7.21635L5.11902 2.1072H1.12949Z"></path></svg>');
+                    } catch (e) {
+                        addLinkWithLoading(referenceLinks, httpUrl, 'View Source', '<svg focusable="false" viewBox="0 0 8 8" height="20" aria-label="Opens in new window" class="icon icon-arrow-up-right-tiny arrow-external-link"><path d="M1.12949 2.1072V1H7V6.85795H5.89111V2.90281L0.784057 8L0 7.21635L5.11902 2.1072H1.12949Z"></path></svg>');
+                    }
                 });
             }
 
