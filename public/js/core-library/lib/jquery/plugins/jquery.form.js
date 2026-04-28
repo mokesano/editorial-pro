@@ -347,6 +347,16 @@ $.fn.ajaxSubmit = function(options) {
 		};
 
 		function toXml(s, doc) {
+			if (typeof s !== 'string') {
+				return null;
+			}
+
+			// Defensive validation: reject unsafe markup constructs before parsing.
+			// This prevents reinterpreting attacker-controlled DOM text as active markup.
+			if (/(<!DOCTYPE|<!ENTITY|<\?|\<script\b)/i.test(s)) {
+				return null;
+			}
+
 			if (window.ActiveXObject) {
 				doc = new ActiveXObject('Microsoft.XMLDOM');
 				doc.async = 'false';
