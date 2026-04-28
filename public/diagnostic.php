@@ -56,7 +56,7 @@ $response = [
 
     // [APP] Informasi Aplikasi
     'app_info' => [
-        'name'        => 'Wizdam Editorial Systems',
+        'name'        => 'Editorial Pro Systems',
         'version'     => '1.0.0.0',
         'last_update' => '2025-10-27',
         'environment' => 'production'

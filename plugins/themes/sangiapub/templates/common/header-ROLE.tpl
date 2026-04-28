@@ -18,7 +18,7 @@
 {/if}
 {/strip}
 <head>
-    <title>{$pageTitleTranslated} | Wizdam Editorial System</title>
+    <title>{$pageTitleTranslated} | Editorial Pro System</title>
         
     <meta name="description" content="{$metaSearchDescription|escape}" />
     <meta name="keywords" content="{$metaSearchKeywords|escape}" />

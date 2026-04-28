@@ -7,7 +7,7 @@ namespace App\Pages\Admin;
 /**
  * @file pages.admin.AdminPublisherSettingsHandler.inc.php
  *
- * Copyright (c) 2013-2025 Wizdam Editorial Project
+ * Copyright (c) 2013-2025 Editorial Pro Project
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @class AdminPublisherSettingsHandler

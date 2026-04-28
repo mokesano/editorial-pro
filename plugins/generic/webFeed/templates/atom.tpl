@@ -43,7 +43,7 @@
 	{* <category/> *}
 	{* <contributor/> *}
 
-	<generator uri="https://wizdam.editorial/" version="{$appVersion|escape}">Wizdam Editorial</generator>
+	<generator uri="https://wizdam.editorial/" version="{$appVersion|escape}">Editorial Pro</generator>
 	{if $journal->getLocalizedDescription()}
 		{assign var="description" value=$journal->getLocalizedDescription()}
 	{elseif $journal->getLocalizedSetting('searchDescription')}
