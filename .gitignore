@@ -1,28 +1,4 @@
 ```
-# Logs and temp files
-*.log
-*.tmp
-
-# Environment
-.env
-.env.local
-*.env.*
-
-# Editors
-.vscode/
-.idea/
-
-# Dependencies
-vendor/
-node_modules/
-
-# Build artifacts
-dist/
-build/
-target/
-*.phar
-
-# Cache
-.cache/
-.phpunit.result.cache
+# Patch files
+*.patch
 ```
