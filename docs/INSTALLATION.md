@@ -1,6 +1,6 @@
-# Panduan Instalasi Wizdam Editorial 1.0
+# Panduan Instalasi ScholarEdge 1.0
 
-Panduan lengkap untuk menginstal Wizdam Editorial 1.0 di berbagai lingkungan.
+Panduan lengkap untuk menginstal ScholarEdge 1.0 di berbagai lingkungan.
 
 ---
 
@@ -482,4 +482,4 @@ Setelah instalasi berhasil:
 
 ---
 
-© 2024 Wizdam Editorial Team
+© 2024 ScholarEdge Team

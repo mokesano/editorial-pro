@@ -1,10 +1,4 @@
 ```
-# PHP compiled files
-*.phpc
-
-# Dependencies
-vendor/
-
 # Logs and temp files
 *.log
 *.tmp
@@ -14,26 +8,21 @@ vendor/
 .env.local
 *.env.*
 
-# IDE files
-.idea/
+# Editors
 .vscode/
+.idea/
+
+# Dependencies
+vendor/
 node_modules/
 
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Build/test artifacts
-build/
+# Build artifacts
 dist/
-coverage/
-htmlcov/
-*.out
+build/
+target/
+*.phar
 
-# Cache directories
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
+# Cache
+.cache/
+.phpunit.result.cache
 ```
