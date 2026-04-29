@@ -1,6 +1,6 @@
 {
     "name": "wizdam/wizdam-editorial",
-    "description": "Editorial Pro - Modern Publisher Platform for Journal Management Framework Workflow and Publishing",
+    "description": "ScholarEdge - Modern Publisher Platform for Journal Management Framework Workflow and Publishing",
     "type": "project",
     "license": "GPL-3.0-only",
     "keywords": [
@@ -112,10 +112,10 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "@php -r \"echo 'Editorial Pro Platform installed successfully!\\n';\""
+            "@php -r \"echo 'ScholarEdge Platform installed successfully!\\n';\""
         ],
         "post-update-cmd": [
-            "@php -r \"echo 'Editorial Pro Platform updated successfully!\\n';\""
+            "@php -r \"echo 'ScholarEdge Platform updated successfully!\\n';\""
         ],
         "test": "phpunit",
         "cs-check": "phpcs --standard=PSR12 core/Library app",
