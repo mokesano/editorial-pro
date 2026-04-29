@@ -13,16 +13,28 @@ error_log
 .env.local
 .env.*
 
+# Editors
+.vscode/
+.idea/
 # Cache and temporary files
 /cache/
 tmp/
 temp/
 *.tmp
 
-# OS generated files
-.DS_Store
-Thumbs.db
+# Dependencies
+vendor/
+node_modules/
 
+# Build artifacts
+dist/
+build/
+target/
+*.phar
+
+# Cache
+.cache/
+.phpunit.result.cache
 # IDE specific
 .idea/
 .vscode/

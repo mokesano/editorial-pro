@@ -1,4 +1,4 @@
-# Contributing to Editorial Pro
+# Contributing to ScholarEdge
 
 First of all, thank you for contributing!
 
