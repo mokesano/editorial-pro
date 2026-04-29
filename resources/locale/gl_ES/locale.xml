@@ -36,8 +36,8 @@
 	-->
 
 	<!-- Common Messages -->
-	<message key="common.openJournalSystems">Wizdam Editorial Systems</message>
-	<message key="common.scholarWizdam">Wizdam Editorial Systems</message>
+	<message key="common.openJournalSystems">Editorial Pro Systems</message>
+	<message key="common.scholarWizdam">Editorial Pro Systems</message>
 
 	<!-- Common Form Messages -->
 	

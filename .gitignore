@@ -1,16 +1,26 @@
 ```
-# Logs and temp files
+# Dependencies
+vendor/
+composer.lock
+
+# Logs
 *.log
-*.tmp
+error_log
+*.err
 
 # Environment
 .env
 .env.local
-*.env.*
+.env.*
 
 # Editors
 .vscode/
 .idea/
+# Cache and temporary files
+/cache/
+tmp/
+temp/
+*.tmp
 
 # Dependencies
 vendor/
@@ -25,4 +35,11 @@ target/
 # Cache
 .cache/
 .phpunit.result.cache
+# IDE specific
+.idea/
+.vscode/
+
+# PHP specific
+*.php~
+phpunit.xml.dist
 ```

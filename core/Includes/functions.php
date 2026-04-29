@@ -146,7 +146,7 @@ function fatalError(string $reason, int $httpStatus = 500): void {
 
     $is404 = $httpStatus === 404;
 
-    $pageTitle   = $is404 ? 'Page Not Found (404) | Wizdam Editorial' : 'Unavailable (500) | Wizdam Editorial';
+    $pageTitle   = $is404 ? 'Page Not Found (404) | Editorial Pro' : 'Unavailable (500) | Editorial Pro';
     $mainMessage = $is404 ? 'Page Not Found' : 'Application Unavailable';
     
     if ($is404) {
