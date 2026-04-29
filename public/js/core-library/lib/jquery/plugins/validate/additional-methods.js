@@ -215,7 +215,47 @@ function isSafeEmailWithOptionalTld(value) {
 
 // same as email, but TLD is optional
 jQuery.validator.addMethod("email2", function(value, element, param) {
-	return this.optional(element) || isSafeEmailWithOptionalTld(value);
+	if (this.optional(element)) {
+		return true;
+	}
+
+	// Linear-time email validation with optional TLD.
+	// Allows: local@domain and local@sub.domain
+	// Disallows obvious malformed addresses that previously failed.
+	var parts = value.split("@");
+	if (parts.length !== 2) {
+		return false;
+	}
+
+	var local = parts[0];
+	var domain = parts[1];
+
+	if (!local || !domain) {
+		return false;
+	}
+
+	// Local part: dot-atom style, no leading/trailing/consecutive dots.
+	if (local.charAt(0) === "." || local.charAt(local.length - 1) === "." || local.indexOf("..") !== -1) {
+		return false;
+	}
+	if (!/^[A-Z0-9.!#$%&'*+\/=?^_`{|}~-]+$/i.test(local)) {
+		return false;
+	}
+
+	// Domain part: labels separated by dots, optional TLD (single label allowed).
+	// Labels must be 1..63 chars, alnum at ends, hyphen allowed inside.
+	var labels = domain.split(".");
+	for (var i = 0; i < labels.length; i++) {
+		var label = labels[i];
+		if (!label || label.length > 63) {
+			return false;
+		}
+		if (!/^[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?$/i.test(label)) {
+			return false;
+		}
+	}
+
+	return true;
 }, jQuery.validator.messages.email);
 
 // same as url, but TLD is optional
